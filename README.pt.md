@@ -57,19 +57,23 @@ Cada entrada no `TODO SEO.md` inclui a URL da fonte, o que será feito, onde toc
 
 ## Instalação
 
-### Recomendado — instale como plugin (global, automático)
+### Opção 1 — instale como plugin (skill disponível em todas as sessões)
 
 ```
 /plugin marketplace add obrenoalvim/findable
 /plugin install findable@findable
 ```
 
-### Manual — invoque por sessão
+Depois invoque quando precisar:
+> "Rode a skill Findable neste projeto."
 
-Aponte o Claude para este repositório:
+### Opção 2 — aponte o Claude para este repo (sem instalar)
+
 > "Leia https://github.com/obrenoalvim/findable e siga a skill Findable."
 
-Ou copie `skills/findable/SKILL.md` para o seu diretório de skills.
+### Opção 3 — copie o arquivo da skill
+
+Copie `skills/findable/SKILL.md` para o diretório de skills do seu projeto e invoque pelo seu sistema de skills.
 
 ---
 
