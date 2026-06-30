@@ -2,100 +2,49 @@
 
 [🇺🇸 Read in English](README.md)
 
-Uma skill para Claude Code que pesquisa boas práticas de SEO e GEO na internet de forma autônoma e aplica melhorias no seu projeto — automaticamente para mudanças seguras, com um plano documentado para mudanças sensíveis.
-
----
-
-## O Problema
-
-A maioria dos projetos é invisível. Código bom, descoberta ruim. Sem sitemap. Sem dados estruturados. Sem `llms.txt`. Mecanismos de busca e IAs não recomendam o que não conseguem entender.
-
-O Findable resolve isso rodando um loop contínuo de pesquisa: busca no GitHub, Google, fóruns e docs as boas práticas mais atuais, aplica o que é seguro e documenta o que precisa da sua revisão.
+Uma skill para Claude Code que pesquisa SEO e GEO na internet. Aponte para um projeto e ela busca o que precisa de ajuste, aplica as mudanças seguras e fila o resto para você revisar.
 
 ---
 
 ## O que faz
 
-1. **Pesquisa** na internet boas práticas de SEO, GEO, llms.txt e visibilidade para IAs
-2. **Lê** seu projeto para entender a stack e o estado atual
-3. **Aplica mudanças seguras** automaticamente — novos arquivos, meta tags, dados estruturados, llms.txt
-4. **Documenta mudanças sensíveis** em `TODO SEO.md` — mudanças de URL, edições estruturais, toques em configs
-5. **Continua rodando** — faz loop até você mandar parar
+Cada ciclo: pesquisa no GitHub, Google, fóruns e docs as boas práticas atuais de SEO, GEO e llms.txt. Lê o projeto para entender a stack. Aplica o que pode, documenta o que não pode.
 
----
+**Mudanças seguras vão direto:** `robots.txt`, `sitemap.xml`, `llms.txt`, meta tags, blocos JSON-LD, links canônicos, alt text faltando.
 
-## Mudanças seguras (aplicadas automaticamente)
+**Mudanças sensíveis vão para `TODO SEO.md`** com a URL da fonte, o arquivo exato a tocar e o motivo. Você decide quando aplicar.
 
-- `robots.txt`, `sitemap.xml`, `llms.txt`, `humans.txt`
-- Tags `<meta>`: title, description, `og:*`, `twitter:*`
-- Blocos de dados estruturados JSON-LD
-- Tags `<link rel="canonical">`
-- Texto `alt` para imagens que não têm
-
-## Mudanças sensíveis (documentadas em TODO SEO.md)
-
-- Mudanças na estrutura de URLs ou rotas
-- Modificações na estrutura HTML existente
-- Configs de build, configs de servidor, `.htaccess`
-- Mudanças na hierarquia de navegação ou links
-
-Cada entrada no `TODO SEO.md` inclui a URL da fonte, o que será feito, onde toca e por quê.
+A skill para quando você pedir, quando não houver mais nada a fazer, ou quando o contexto acabar. Se o contexto encher no meio do ciclo, ela atualiza o `TODO SEO.md` para uma nova sessão continuar de onde parou.
 
 ---
 
 ## Cobertura
 
-| Área | Exemplos |
-|------|---------|
-| **SEO** | sitemaps, robots.txt, dados estruturados, Core Web Vitals, URLs canônicas |
-| **GEO** | generative engine optimization, rastreabilidade por IAs, sinais de conteúdo |
-| **llms.txt** | arquivos de contexto legíveis por IAs seguindo o padrão llmstxt.org |
-| **Visibilidade para IA** | aparecer nas recomendações do ChatGPT, Perplexity, Claude, Gemini |
-| **Rich results** | Open Graph, Twitter Cards, JSON-LD, rich snippets |
+- **SEO:** sitemaps, robots.txt, dados estruturados, Core Web Vitals, URLs canônicas
+- **GEO:** como LLMs descobrem e recomendam seu conteúdo (Generative Engine Optimization)
+- **llms.txt:** arquivos de contexto legíveis por IA seguindo o padrão [llmstxt.org](https://llmstxt.org)
+- **Rich results:** Open Graph, Twitter Cards, JSON-LD, schema.org
 
 ---
 
-## Instalação
+## Como usar
 
-### Opção 1 — instale como plugin (skill disponível em todas as sessões)
+**Sem instalar:**
+> "Leia https://github.com/obrenoalvim/findable e siga a skill Findable."
 
+**Como plugin (disponível em todas as sessões):**
 ```
 /plugin marketplace add obrenoalvim/findable
 /plugin install findable@findable
 ```
 
-Depois invoque quando precisar:
-> "Rode a skill Findable neste projeto."
+Depois invoque: "Rode a skill Findable neste projeto."
 
-### Opção 2 — aponte o Claude para este repo (sem instalar)
-
-> "Leia https://github.com/obrenoalvim/findable e siga a skill Findable."
-
-### Opção 3 — copie o arquivo da skill
-
+**Copie o arquivo da skill:**
 Copie `skills/findable/SKILL.md` para o diretório de skills do seu projeto e invoque pelo seu sistema de skills.
 
 ---
 
-## Uso
+## Funciona com
 
-Uma vez ativo, o Findable roda de forma autônoma. Ele vai:
-
-- Reportar o que pesquisou e encontrou (com URLs das fontes)
-- Mostrar o que foi aplicado (com caminhos dos arquivos)
-- Mostrar o que foi enfileirado em `TODO SEO.md`
-- Informar o foco do próximo ciclo
-
-Diga **"stop"** ou **"pare"** para encerrar o loop.
-
----
-
-## Compatibilidade
-
-Funciona com qualquer projeto que tenha presença na web:
-
-- Sites estáticos (HTML, Jekyll, Hugo, Eleventy, Astro)
-- Next.js, Nuxt, SvelteKit, Remix
-- Apps backend com saída HTML (Rails, Django, Laravel, Express)
-- Sites de documentação (Docusaurus, VitePress, GitBook)
-- Qualquer projeto que precise ser encontrado
+Sites estáticos, Next.js, Nuxt, SvelteKit, Remix, Rails, Django, Laravel, Express, Docusaurus, VitePress, ou qualquer projeto com presença na web.

@@ -2,100 +2,49 @@
 
 [🇧🇷 Leia em Português](README.pt.md)
 
-A Claude Code skill that autonomously researches SEO and GEO best practices from the web and applies improvements to your project — automatically for safe changes, with a documented plan for sensitive ones.
-
----
-
-## The Problem
-
-Most projects are invisible. Good code, bad discoverability. No sitemap. No structured data. No `llms.txt`. Search engines and AI systems can't recommend what they can't understand.
-
-Findable fixes this by running a continuous research loop: it searches GitHub, Google, forums, and docs for current best practices, then applies what's safe and documents what needs your review.
+A Claude Code skill for SEO and GEO research. Point it at a project and it searches the web for what needs fixing, applies the safe changes, and queues the rest for you to review.
 
 ---
 
 ## What it does
 
-1. **Searches** the web for SEO, GEO, llms.txt, and AI visibility best practices
-2. **Reads** your project to understand the stack and current state
-3. **Applies safe changes** automatically — new files, meta tags, structured data, llms.txt
-4. **Documents sensitive changes** in `TODO SEO.md` — URL changes, structural edits, config touches
-5. **Keeps going** — loops until you say stop
+Each cycle: searches GitHub, Google, forums, and docs for current SEO, GEO, and llms.txt best practices. Reads your project to understand the stack. Applies what it can, documents what it can't.
 
----
+**Safe changes go in right away:** `robots.txt`, `sitemap.xml`, `llms.txt`, meta tags, JSON-LD blocks, canonical links, missing alt text.
 
-## Safe changes (applied automatically)
+**Sensitive changes go into `TODO SEO.md`** with the source URL, the exact file to touch, and the reason. You decide when to apply them.
 
-- `robots.txt`, `sitemap.xml`, `llms.txt`, `humans.txt`
-- `<meta>` tags: title, description, `og:*`, `twitter:*`
-- JSON-LD structured data blocks
-- `<link rel="canonical">` tags
-- `alt` text for images missing it
-
-## Sensitive changes (documented in TODO SEO.md)
-
-- URL structure or routing changes
-- Existing HTML structure modifications
-- Build configs, server configs, `.htaccess`
-- Navigation or link hierarchy changes
-
-Each entry in `TODO SEO.md` includes the source URL, what will be done, where it touches, and why.
+The skill stops when you ask, when there's nothing left to do, or when context runs out. If context fills mid-run, it updates `TODO SEO.md` so a new session can pick up from there.
 
 ---
 
 ## Coverage
 
-| Area | Examples |
-|------|---------|
-| **SEO** | sitemaps, robots.txt, structured data, Core Web Vitals, canonical URLs |
-| **GEO** | generative engine optimization, AI crawlability, content signals |
-| **llms.txt** | AI-readable context files following the llmstxt.org standard |
-| **AI visibility** | appearing in ChatGPT, Perplexity, Claude, Gemini recommendations |
-| **Rich results** | Open Graph, Twitter Cards, JSON-LD, rich snippets |
+- **SEO:** sitemaps, robots.txt, structured data, Core Web Vitals, canonical URLs
+- **GEO:** how LLMs discover and recommend your content (Generative Engine Optimization)
+- **llms.txt:** AI-readable context files following [llmstxt.org](https://llmstxt.org)
+- **Rich results:** Open Graph, Twitter Cards, JSON-LD, schema.org
 
 ---
 
-## Installation
+## Use it
 
-### Option 1 — install as plugin (skill available in all sessions)
+**No install needed:**
+> "Read https://github.com/obrenoalvim/findable and follow the Findable skill."
 
+**As a plugin (available in all sessions):**
 ```
 /plugin marketplace add obrenoalvim/findable
 /plugin install findable@findable
 ```
 
-Then invoke it when you need it:
-> "Run the Findable skill on this project."
+Then invoke it: "Run the Findable skill on this project."
 
-### Option 2 — point Claude at this repo (no install)
-
-> "Read https://github.com/obrenoalvim/findable and follow the Findable skill."
-
-### Option 3 — copy the skill file
-
-Copy `skills/findable/SKILL.md` into your project's skills directory and invoke via your skill system.
+**Copy the skill file:**
+Copy `skills/findable/SKILL.md` into your skills directory and invoke through your skill system.
 
 ---
 
-## Usage
+## Works with
 
-Once active, Findable runs autonomously. It will:
-
-- Report what it searched and found (with source URLs)
-- Show what was applied (with file paths)
-- Show what was queued in `TODO SEO.md`
-- Tell you what the next cycle will focus on
-
-Say **"stop"** or **"pare"** to end the loop.
-
----
-
-## Compatibility
-
-Works with any project that has a web presence:
-
-- Static sites (HTML, Jekyll, Hugo, Eleventy, Astro)
-- Next.js, Nuxt, SvelteKit, Remix
-- Backend apps with HTML output (Rails, Django, Laravel, Express)
-- Documentation sites (Docusaurus, VitePress, GitBook)
-- Any project that needs to be found
+Static sites, Next.js, Nuxt, SvelteKit, Remix, Rails, Django, Laravel, Express, Docusaurus, VitePress, or any project with a web presence.

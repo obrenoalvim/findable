@@ -127,9 +127,14 @@ After each cycle:
 2. Read the project state (files, stack, existing SEO setup)
 3. Apply safe changes or add to `TODO SEO.md`
 4. Report: what was searched, what was found (with URLs), what was applied, what was queued
-5. **Repeat** — do not stop until the user says to stop
+5. Repeat
 
-The loop is continuous. If context fills, update `TODO SEO.md` with current state so a new session can resume from `TODO SEO.md`.
+Stop when one of these is true:
+- The user says to stop
+- There is nothing left to find or apply (all known improvements are either done or in `TODO SEO.md`)
+- Context is running out
+
+If context fills before finishing, update `TODO SEO.md` with current state. A new session can resume by reading `TODO SEO.md`.
 
 ---
 
