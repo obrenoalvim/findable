@@ -2,7 +2,7 @@
 name: findable
 description: Autonomous SEO/GEO research and optimization skill — searches the web for best practices, applies safe improvements automatically, and documents sensitive changes in TODO SEO.md
 when_to_use: when you want to improve a project's visibility in search engines and AI recommendations
-version: 1.0.0
+version: 1.1.0
 languages: all
 ---
 
@@ -37,6 +37,15 @@ Every research cycle covers:
 - **Crawlability** — robots.txt, sitemap.xml, internal linking, page speed
 
 Sources to search: GitHub repos, GitLab projects, Google Search, Hacker News, dev.to, Reddit (r/SEO, r/webdev), Stack Overflow, official docs (Google Search Central, schema.org, llmstxt.org, web.dev)
+
+### Community/social research — prefer last30days
+
+For anything community- or sentiment-driven — what people are actually saying right now on Reddit, Hacker News, X, etc. about SEO/GEO/AI-visibility practices — invoke the `last30days` skill first if it's available. It aggregates and engagement-ranks real posts across Reddit, HN, X, YouTube, TikTok, and GitHub, which plain web search frequently fails at (queries like `site:reddit.com OR site:hn.algolia.com` often return nothing useful from web search alone).
+
+Priority order per cycle:
+1. Try `last30days` for the community/sentiment angle of the current research question.
+2. Regardless of whether it finds anything, still run the normal web search queries below — they cover official docs and general guides that `last30days` doesn't target.
+3. If `last30days` isn't installed, skip straight to web search — don't block the cycle on it.
 
 ---
 
@@ -123,7 +132,7 @@ technical SEO checklist site:dev.to
 ## Research loop
 
 After each cycle:
-1. Search for new SEO/GEO sources and updates
+1. If `last30days` is available, use it first for the community/sentiment angle — then search the web regardless of what it turns up
 2. Read the project state (files, stack, existing SEO setup)
 3. Apply safe changes or add to `TODO SEO.md`
 4. Report: what was searched, what was found (with URLs), what was applied, what was queued
