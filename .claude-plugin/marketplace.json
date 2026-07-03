@@ -4,6 +4,7 @@
     "name": "Breno Alvim",
     "email": "brenoalvim.dev@gmail.com"
   },
+  "allowCrossMarketplaceDependenciesOn": ["last30days-skill"],
   "plugins": [
     {
       "name": "findable",

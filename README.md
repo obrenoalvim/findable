@@ -27,6 +27,12 @@ The skill stops when you ask, when there's nothing left to do, or when context r
 
 ---
 
+## Works best with last30days
+
+Findable depends on [last30days](https://github.com/mvanhorn/last30days-skill) for the community/sentiment angle of research — what people are actually saying on Reddit, Hacker News, X, etc. Plain web search misses most of that. Installing findable as a plugin auto-installs it. Without it, findable still works, but skips straight to web search for that part.
+
+---
+
 ## Use it
 
 **No install needed:**

@@ -27,6 +27,12 @@ A skill para quando você pedir, quando não houver mais nada a fazer, ou quando
 
 ---
 
+## Funciona melhor com last30days
+
+Findable depende do [last30days](https://github.com/mvanhorn/last30days-skill) pro ângulo de comunidade/sentimento da pesquisa — o que as pessoas estão falando de verdade no Reddit, Hacker News, X, etc. Busca web comum não pega isso. Instalar o findable como plugin já instala ele automaticamente. Sem ele, o findable ainda funciona, mas pula direto pra busca web nessa parte.
+
+---
+
 ## Como usar
 
 **Sem instalar:**
