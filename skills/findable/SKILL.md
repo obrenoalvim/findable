@@ -42,10 +42,15 @@ Sources to search: GitHub repos, GitLab projects, Google Search, Hacker News, de
 
 For anything community- or sentiment-driven — what people are actually saying right now on Reddit, Hacker News, X, etc. about SEO/GEO/AI-visibility practices — invoke the `last30days` skill first if it's available. It aggregates and engagement-ranks real posts across Reddit, HN, X, YouTube, TikTok, and GitHub, which plain web search frequently fails at (queries like `site:reddit.com OR site:hn.algolia.com` often return nothing useful from web search alone).
 
+### Blocked research — optional `web`/unblock skill
+
+If a source comes back blocked, paywalled, or empty (403/429, CAPTCHA, thin/garbage result) and the `web` skill (aka "unblock") is installed, it may be invoked to push through via its fallback chain instead of just discarding that source. This is purely optional: never required, never installed on demand, never a reason to pause a cycle. If it isn't installed, or a query isn't worth the extra hop, just move on to the next query.
+
 Priority order per cycle:
 1. Try `last30days` for the community/sentiment angle of the current research question.
 2. Regardless of whether it finds anything, still run the normal web search queries below — they cover official docs and general guides that `last30days` doesn't target.
 3. If `last30days` isn't installed, skip straight to web search — don't block the cycle on it.
+4. For a source that comes back blocked or empty, optionally try `web` if installed — otherwise skip it and keep going.
 
 ---
 
@@ -87,6 +92,7 @@ Sensitive change examples:
 - Modifying build configs, server configs, `.htaccess`, `nginx.conf`
 - Changing meta tags that were deliberately set
 - Restructuring content or pages
+- Editing an existing `robots.txt`, `sitemap.xml`, or `llms.txt` — the safe-change list above only covers creating these when absent; once one exists, treat any edit to it as sensitive
 - Any change where the right answer depends on the specific stack
 
 ### TODO SEO.md format
@@ -114,18 +120,20 @@ Sensitive change examples:
 Use web search with queries like:
 
 ```
-SEO best practices 2024 site:github.com
+SEO best practices site:github.com
 llms.txt specification
 GEO generative engine optimization guide
 how LLMs crawl and recommend websites
 structured data JSON-LD best practices schema.org
-robots.txt best practices 2024
+robots.txt best practices
 sitemap.xml optimization tips
-Core Web Vitals optimization 2024
+Core Web Vitals optimization
 Open Graph meta tags complete guide
 AI visibility SEO recommendations site:reddit.com OR site:hn.algolia.com
 technical SEO checklist site:dev.to
 ```
+
+Add the current year to a query only when freshness genuinely matters (e.g. "Core Web Vitals thresholds 2026") — a hardcoded year goes stale the moment the calendar turns and biases results toward outdated pages.
 
 ---
 
@@ -133,10 +141,11 @@ technical SEO checklist site:dev.to
 
 After each cycle:
 1. If `last30days` is available, use it first for the community/sentiment angle — then search the web regardless of what it turns up
-2. Read the project state (files, stack, existing SEO setup)
-3. Apply safe changes or add to `TODO SEO.md`
-4. Report: what was searched, what was found (with URLs), what was applied, what was queued
-5. Repeat
+2. If a search comes back blocked or empty, optionally invoke `web` (if installed) to try harder — skip this step entirely if `web` isn't installed or it's not worth the hop
+3. Read the project state (files, stack, existing SEO setup)
+4. Apply safe changes or add to `TODO SEO.md`
+5. Report: what was searched, what was found (with URLs), what was applied, what was queued
+6. Repeat
 
 Stop when one of these is true:
 - The user says to stop
