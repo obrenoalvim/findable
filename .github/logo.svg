@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="findable logo">
+<title>findable</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b1e29"/><stop offset="1" stop-color="#0b0c11"/></linearGradient>
+<radialGradient id="gl" cx=".28" cy=".22" r=".8"><stop offset="0" stop-color="#FFB020" stop-opacity=".30"/><stop offset="1" stop-color="#FFB020" stop-opacity="0"/></radialGradient>
+<linearGradient id="g" gradientUnits="userSpaceOnUse" x1="112" y1="96" x2="400" y2="416"><stop offset="0" stop-color="#FFE08A"/><stop offset="1" stop-color="#FFB020"/></linearGradient>
+</defs>
+<rect width="512" height="512" rx="112" fill="url(#bg)"/>
+<rect width="512" height="512" rx="112" fill="url(#gl)"/>
+<rect x="3" y="3" width="506" height="506" rx="109" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="6"/>
+<circle cx="224" cy="224" r="116" fill="none" stroke="url(#g)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/><path d="M310 310L398 398" fill="none" stroke="url(#g)" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/><path d="M224 148C228 190 242 206 288 224C242 242 228 258 224 300C220 258 206 242 160 224C206 206 220 190 224 148Z" fill="url(#g)"/>
+</svg>
